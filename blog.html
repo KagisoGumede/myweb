@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ntandoyenkosi — Blog & Thoughts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--primary:#050f14;--surface:#091a22;--card:#0d2535;--border:rgba(0,212,255,0.12);--border-strong:rgba(0,212,255,0.3);--accent:#00d4ff;--accent-dim:rgba(0,212,255,0.1);--gold:#c9a84c;--gold-dim:rgba(201,168,76,0.15);--text:#e8f4f8;--text-muted:rgba(232,244,248,0.65);--text-faint:rgba(232,244,248,0.32);--gradient:linear-gradient(135deg,#00d4ff 0%,#0099cc 100%);}
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Outfit',sans-serif;background:var(--primary);color:var(--text);line-height:1.65;overflow-x:hidden;}
+        ::-webkit-scrollbar{width:5px;}
+        ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px;}
+
+        #progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--gradient);z-index:9999;width:0%;transition:width .1s linear;}
+
+        .back-btn{position:fixed;top:24px;left:24px;z-index:100;display:inline-flex;align-items:center;gap:8px;background:rgba(9,26,34,0.92);border:1px solid var(--border-strong);color:var(--accent);padding:10px 18px;border-radius:50px;text-decoration:none;font-size:.85rem;font-weight:600;backdrop-filter:blur(14px);transition:all .3s ease;}
+        .back-btn:hover{background:var(--accent-dim);transform:translateX(-3px);}
+
+        #back-to-top{position:fixed;bottom:28px;right:28px;width:48px;height:48px;background:var(--card);border:1px solid var(--border-strong);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:999;color:var(--accent);opacity:0;pointer-events:none;transform:translateY(10px);transition:all .3s ease;}
+        #back-to-top.visible{opacity:1;pointer-events:all;transform:translateY(0);}
+        #back-to-top:hover{background:var(--accent-dim);transform:translateY(-3px);}
+
+        .page-hero{min-height:50vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:8rem 2rem 4rem;}
+        .hero-bg-text{position:absolute;font-family:'Cormorant Garamond',serif;font-size:clamp(6rem,18vw,16rem);font-weight:700;color:rgba(0,212,255,0.025);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;user-select:none;}
+        .orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;}
+        .orb-a{width:400px;height:400px;background:rgba(0,150,200,0.1);top:-100px;right:-100px;animation:driftA 14s ease-in-out infinite;}
+        @keyframes driftA{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,40px)}}
+        .hero-inner{position:relative;z-index:2;text-align:center;max-width:700px;}
+        .page-label{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.3);background:rgba(201,168,76,0.08);padding:6px 16px;border-radius:50px;margin-bottom:1.5rem;animation:fadeUp .8s .1s ease-out both;}
+        .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:700;line-height:1.1;margin-bottom:1rem;animation:fadeUp .8s .2s ease-out both;}
+        .page-title em{font-style:italic;color:var(--accent);}
+        .page-subtitle{font-size:1.05rem;color:var(--text-muted);max-width:500px;margin:0 auto;line-height:1.8;animation:fadeUp .8s .3s ease-out both;}
+
+        .section{padding:5rem 0;position:relative;z-index:1;}
+        .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+        .blog-featured{background:var(--card);border:1px solid var(--border-strong);border-radius:24px;padding:3rem;margin-bottom:3rem;position:relative;overflow:hidden;transition:all .3s ease;cursor:pointer;}
+        .blog-featured::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient);}
+        .blog-featured:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.4);}
+        .featured-label{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,0.1);color:var(--gold);border:1px solid rgba(201,168,76,0.3);padding:5px 14px;border-radius:50px;font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.25rem;}
+        .blog-featured h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;line-height:1.2;margin-bottom:1rem;}
+        .blog-featured h2 em{font-style:italic;color:var(--accent);}
+        .blog-featured p{font-size:1rem;color:var(--text-muted);line-height:1.8;max-width:720px;margin-bottom:1.5rem;}
+        .blog-featured-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+        .author-info{display:flex;align-items:center;gap:.75rem;}
+        .author-avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid var(--border-strong);}
+        .author-avatar img{width:100%;height:100%;object-fit:cover;}
+        .author-name{display:block;font-size:.9rem;font-weight:600;}
+        .author-date{display:block;font-size:.78rem;color:var(--text-faint);}
+        .read-btn{display:inline-flex;align-items:center;gap:8px;background:var(--gradient);color:var(--primary);padding:.7rem 1.5rem;border-radius:50px;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .3s ease;border:none;cursor:pointer;}
+        .read-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,212,255,0.4);}
+
+        .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+        .blog-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .35s ease;display:flex;flex-direction:column;cursor:pointer;}
+        .blog-card:hover{border-color:var(--border-strong);transform:translateY(-8px);box-shadow:0 16px 40px rgba(0,0,0,0.4);}
+        .blog-card-top{padding:2rem 2rem 0;}
+        .blog-tag{display:inline-block;background:var(--accent-dim);color:var(--accent);border:1px solid var(--border);padding:4px 12px;border-radius:50px;font-size:.75rem;font-weight:600;letter-spacing:.5px;margin-bottom:1rem;}
+        .blog-tag.gold{background:var(--gold-dim);color:var(--gold);border-color:rgba(201,168,76,0.25);}
+        .blog-tag.green{background:rgba(34,221,136,0.1);color:#22dd88;border-color:rgba(34,221,136,0.25);}
+        .blog-card h2{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;line-height:1.3;margin-bottom:.75rem;color:var(--text);}
+        .blog-card p{font-size:.9rem;color:var(--text-muted);line-height:1.7;padding:0 2rem;}
+        .blog-card-bottom{padding:1.25rem 2rem 1.5rem;margin-top:auto;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);margin-top:1.5rem;}
+        .blog-meta{font-size:.78rem;color:var(--text-faint);}
+        .blog-read{font-size:.82rem;color:var(--accent);font-weight:600;}
+
+        .modal-overlay{position:fixed;inset:0;background:rgba(5,15,20,0.95);z-index:10000;display:flex;align-items:flex-start;justify-content:center;padding:2rem;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+        .modal-overlay.active{opacity:1;pointer-events:all;}
+        .modal-box{background:var(--surface);border:1px solid var(--border-strong);border-radius:24px;max-width:780px;width:100%;padding:3rem;position:relative;margin:auto;animation:modalIn .3s ease-out;}
+        @keyframes modalIn{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+        .modal-close{position:absolute;top:1.5rem;right:1.5rem;background:var(--card);border:1px solid var(--border);color:var(--text-muted);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;transition:all .3s ease;}
+        .modal-close:hover{border-color:var(--border-strong);color:var(--text);}
+        .modal-tag{display:inline-block;background:var(--accent-dim);color:var(--accent);border:1px solid var(--border);padding:4px 12px;border-radius:50px;font-size:.75rem;font-weight:600;margin-bottom:1.25rem;}
+        .modal-tag.gold{background:var(--gold-dim);color:var(--gold);border-color:rgba(201,168,76,0.3);}
+        .modal-tag.green{background:rgba(34,221,136,0.1);color:#22dd88;border-color:rgba(34,221,136,0.25);}
+        .modal-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.2;margin-bottom:1rem;}
+        .modal-meta{font-size:.82rem;color:var(--text-faint);margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
+        .modal-body p{font-size:1rem;color:var(--text-muted);line-height:1.9;margin-bottom:1.25rem;}
+        .modal-body p strong{color:var(--text);}
+        .modal-body h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--accent);margin:2rem 0 .75rem;}
+        .modal-body blockquote{border-left:3px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;background:var(--card);border-radius:0 12px 12px 0;font-style:italic;color:var(--text-muted);font-size:1.05rem;}
+
+        .footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem 0;text-align:center;}
+        .footer p{font-size:.82rem;color:var(--text-faint);}
+
+        .reveal{opacity:0;transform:translateY(25px);transition:opacity .65s ease,transform .65s ease;}
+        .reveal.visible{opacity:1;transform:translateY(0);}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+
+        @media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr;}}
+        @media(max-width:600px){.blog-grid{grid-template-columns:1fr;}.modal-box{padding:2rem 1.25rem;}.blog-featured{padding:2rem;}}
+    </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<a href="index.html" class="back-btn">← Back to Portfolio</a>
+<button id="back-to-top" title="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<!-- HERO -->
+<section class="page-hero">
+    <div class="hero-bg-text">THOUGHTS</div>
+    <div class="orb orb-a"></div>
+    <div class="hero-inner">
+        <span class="page-label">My Writing</span>
+        <h1 class="page-title">Blog &amp; <em>Thoughts</em></h1>
+        <p class="page-subtitle">Lessons from the field, tech insights, and stories from a rural KZN kid navigating the corporate tech world.</p>
+    </div>
+</section>
+
+<!-- BLOG POSTS -->
+<section class="section">
+    <div class="container">
+
+        <!-- FEATURED -->
+        <div class="blog-featured reveal" onclick="openModal('post1')">
+            <div class="featured-label">⭐ Featured Post</div>
+            <h2>From No Electricity in KZN to <em>Building Banking Systems</em> at FNB</h2>
+            <p>Growing up in rural Manguzi with no electricity, walking 5km to school every day — I never imagined I would one day be writing code for one of South Africa's biggest banks. This is the story nobody tells you about breaking into tech from the ground up.</p>
+            <div class="blog-featured-footer">
+                <div class="author-info">
+                    <div class="author-avatar"><img src="profile-image.jpeg" alt="Ntandoyenkosi"></div>
+                    <div>
+                        <span class="author-name">Ntandoyenkosi Gumede</span>
+                        <span class="author-date">April 2026 · 8 min read</span>
+                    </div>
+                </div>
+                <button class="read-btn">Read Story →</button>
+            </div>
+        </div>
+
+        <!-- GRID -->
+        <div class="blog-grid">
+            <div class="blog-card reveal" onclick="openModal('post2')">
+                <div class="blog-card-top">
+                    <span class="blog-tag">Business Analysis</span>
+                    <h2>Business Analyst vs Systems Analyst — What's the Real Difference?</h2>
+                    <p>Most people use these titles interchangeably. Having done both roles, let me break down what each actually means in practice.</p>
+                </div>
+                <div class="blog-card-bottom">
+                    <span class="blog-meta">April 2026 · 5 min read</span>
+                    <span class="blog-read">Read →</span>
+                </div>
+            </div>
+
+            <div class="blog-card reveal" onclick="openModal('post3')">
+                <div class="blog-card-top">
+                    <span class="blog-tag gold">Career</span>
+                    <h2>How to Break Into Tech From a Rural Background — My Honest Advice</h2>
+                    <p>If you are from a township or rural area dreaming of a tech career, this one is for you. No sugarcoating — just the real steps that worked for me.</p>
+                </div>
+                <div class="blog-card-bottom">
+                    <span class="blog-meta">March 2026 · 6 min read</span>
+                    <span class="blog-read">Read →</span>
+                </div>
+            </div>
+
+            <div class="blog-card reveal" onclick="openModal('post4')">
+                <div class="blog-card-top">
+                    <span class="blog-tag green">Lessons</span>
+                    <h2>5 Things My First Year at FNB Taught Me About Enterprise Tech</h2>
+                    <p>University prepares you for theory. The workplace teaches you reality. Here are 5 lessons from my first year in a real enterprise environment.</p>
+                </div>
+                <div class="blog-card-bottom">
+                    <span class="blog-meta">March 2026 · 4 min read</span>
+                    <span class="blog-read">Read →</span>
+                </div>
+            </div>
+
+            <div class="blog-card reveal" onclick="openModal('post5')">
+                <div class="blog-card-top">
+                    <span class="blog-tag">Tech</span>
+                    <h2>Why Every Developer Should Understand Business Analysis</h2>
+                    <p>Code without context is just noise. Understanding the business behind the system makes you 10x more valuable.</p>
+                </div>
+                <div class="blog-card-bottom">
+                    <span class="blog-meta">February 2026 · 5 min read</span>
+                    <span class="blog-read">Read →</span>
+                </div>
+            </div>
+
+            <div class="blog-card reveal" onclick="openModal('post6')">
+                <div class="blog-card-top">
+                    <span class="blog-tag gold">Personal</span>
+                    <h2>What Playing Drums in Church Taught Me About Teamwork</h2>
+                    <p>Before I ever sat in a sprint planning meeting, I was keeping rhythm for a full church band. The lessons were surprisingly similar.</p>
+                </div>
+                <div class="blog-card-bottom">
+                    <span class="blog-meta">February 2026 · 4 min read</span>
+                    <span class="blog-read">Read →</span>
+                </div>
+            </div>
+
+            <div class="blog-card reveal" onclick="openModal('post7')">
+                <div class="blog-card-top">
+                    <span class="blog-tag green">Africa Tech</span>
+                    <h2>Africa's Tech Wave Is Coming — Are We Ready?</h2>
+                    <p>The next billion-dollar tech companies will come from Africa. Here is why I believe that and what role young SA developers must play.</p>
+                </div>
+                <div class="blog-card-bottom">
+                    <span class="blog-meta">January 2026 · 7 min read</span>
+                    <span class="blog-read">Read →</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026 Ntandoyenkosi Kagiso Gumede · Johannesburg, South Africa 🇿🇦</p>
+    </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div id="modal-content"></div>
+    </div>
+</div>
+
+<script>
+const posts = {
+    post1:{tag:'⭐ Featured',tagClass:'',title:'From No Electricity in KZN to Building Banking Systems at FNB',meta:'Ntandoyenkosi Gumede · April 2026 · 8 min read',body:`
+        <p>I was born in <strong>Manguzi, KwaZulu-Natal</strong> — a rural area where electricity was not a given. Every morning I woke up before the sun, walked more than 5 kilometres to school, came back, helped with the cows and the crops, and went to sleep. That was life.</p>
+        <h3>The Moment Everything Changed</h3>
+        <p>In matric at Nodineka High School, I discovered technology. Not just computers — the <strong>idea</strong> that technology could solve the exact problems I saw in my community every day. I decided right then: this was my path.</p>
+        <blockquote>"I did not choose tech because it was trendy. I chose it because I believed it could change lives — starting with mine."</blockquote>
+        <h3>Moving to Johannesburg</h3>
+        <p>I enrolled at <strong>Tshwane University of Technology</strong> for a Diploma in Informatics. Moving from rural KZN to Johannesburg was a culture shock. But the same resilience that got me through 5km walks to school got me through every late night in the computer lab.</p>
+        <h3>Landing at FNB</h3>
+        <p>Today I am a Software Developer Learner at <strong>First National Bank</strong> — building systems that serve hundreds of thousands of South Africans. Every time I push code to production, I think about that boy in Manguzi. He would be proud.</p>
+        <p>If you are reading this from a rural area or township and wondering whether tech is for you — the answer is absolutely yes. The journey is hard. The rewards are real.</p>
+    `},
+    post2:{tag:'Business Analysis',tagClass:'',title:"Business Analyst vs Systems Analyst — What's the Real Difference?",meta:'Ntandoyenkosi Gumede · April 2026 · 5 min read',body:`
+        <p>After working both roles at Rain Cloud and FNB, I can tell you with confidence — these titles are <strong>not the same</strong>, and the difference matters more than most people realise.</p>
+        <h3>The Business Analyst</h3>
+        <p>A Business Analyst lives in the <strong>problem space</strong>. Your job is to understand what the business needs, why they need it, and translate that into requirements that developers can act on. You talk to stakeholders, run workshops, write BRDs and user stories. You are the bridge.</p>
+        <h3>The Systems Analyst</h3>
+        <p>A Systems Analyst lives in the <strong>solution space</strong>. You take those requirements and design how the system will actually work — UML diagrams, database schemas, API specifications, data flows. You are the architect.</p>
+        <blockquote>"The BA asks WHAT and WHY. The SA asks HOW."</blockquote>
+        <h3>Why You Need Both Skills</h3>
+        <p>In most South African enterprises, one person does both. That is why understanding both roles makes you <strong>incredibly valuable</strong>. You can translate between the business world and the technical world fluently — and that skill is rare.</p>
+    `},
+    post3:{tag:'Career',tagClass:'gold',title:'How to Break Into Tech From a Rural Background — My Honest Advice',meta:'Ntandoyenkosi Gumede · March 2026 · 6 min read',body:`
+        <p>Let me be real with you. The tech industry was not built with people like us in mind. But that does not mean we cannot get in, thrive, and eventually change it from the inside.</p>
+        <h3>Step 1: Start With What You Have</h3>
+        <p>You do not need a laptop, fast internet, or a tech park nearby to start learning. I started on a university computer lab. Use libraries. Use your phone. Use whatever you have access to — <strong>resourcefulness is your superpower</strong>.</p>
+        <h3>Step 2: Get a Qualification</h3>
+        <p>A diploma, a degree, a certificate from a reputable online platform — it all counts. Mine was a <strong>Diploma in Informatics from TUT</strong>. It opened the first door.</p>
+        <h3>Step 3: Apply for Learnerships and Internships</h3>
+        <p>FNB, Standard Bank, Accenture, Vodacom — South African companies run learnerships specifically for young people. <strong>Apply to everything</strong>. Rejection is just redirection.</p>
+        <blockquote>"You do not need to know everything to start. You just need to start."</blockquote>
+        <h3>Step 4: Build in Public</h3>
+        <p>Create a portfolio. Put it on GitHub. Share it on LinkedIn. Let people see your work before they see your background. Your skills should speak first.</p>
+    `},
+    post4:{tag:'Lessons',tagClass:'green',title:'5 Things My First Year at FNB Taught Me About Enterprise Tech',meta:'Ntandoyenkosi Gumede · March 2026 · 4 min read',body:`
+        <p>University is theory. The enterprise is reality. Here are the 5 things nobody warned me about.</p>
+        <h3>1. Documentation Is Everything</h3>
+        <p>In university you write code and move on. In enterprise, <strong>if it is not documented, it did not happen</strong>. Every decision, every requirement, every change — document it.</p>
+        <h3>2. Communication Is a Technical Skill</h3>
+        <p>Being able to explain a complex system to a non-technical stakeholder is just as important as building the system. I have seen brilliant developers fail because they could not communicate their work.</p>
+        <h3>3. Nothing Goes Live Without Testing</h3>
+        <p>Production is sacred. Before anything touches real users, it must survive multiple rounds of testing. UAT is not optional — it is survival.</p>
+        <h3>4. Agile Is a Mindset, Not Just a Process</h3>
+        <p>Sprint planning, stand-ups, retrospectives — done right, Agile is how you <strong>stay sane</strong> in a fast-moving environment.</p>
+        <h3>5. Ask Questions Early and Often</h3>
+        <p>Silence is the most expensive thing in tech. If you do not understand a requirement, ask. It is much cheaper to clarify upfront than to rebuild later.</p>
+    `},
+    post5:{tag:'Tech',tagClass:'',title:'Why Every Developer Should Understand Business Analysis',meta:'Ntandoyenkosi Gumede · February 2026 · 5 min read',body:`
+        <p>I have seen developers write technically perfect code that solved the completely wrong problem. Thousands of hours wasted. All because nobody understood what the business actually needed.</p>
+        <h3>Code Without Context Is Just Noise</h3>
+        <p>When you understand Business Analysis, you stop asking "what should I build?" and start asking "what problem are we solving?" That shift changes everything about how you work.</p>
+        <blockquote>"A developer who understands the business is worth five who only understand the code."</blockquote>
+        <h3>What to Learn</h3>
+        <p>You do not need to become a full BA. But understanding <strong>user stories, requirements gathering, and stakeholder communication</strong> will make you the developer that everyone wants on their team.</p>
+        <h3>The Practical Benefit</h3>
+        <p>When you understand why a feature exists, you write better code. You anticipate edge cases. You ask the right questions before starting. You deliver something the client actually wanted — not just what they asked for.</p>
+    `},
+    post6:{tag:'Personal',tagClass:'gold',title:'What Playing Drums in Church Taught Me About Teamwork',meta:'Ntandoyenkosi Gumede · February 2026 · 4 min read',body:`
+        <p>Long before I ever sat in a sprint planning session, I was behind a drum kit in a small church in rural KwaZulu-Natal. Those Sunday mornings taught me more about collaboration than any management course ever could.</p>
+        <h3>Everyone Has a Part</h3>
+        <p>In a band, every instrument matters. The drums keep the time. The guitar carries the melody. The choir brings the voice. If one person plays too loud or goes off tempo — <strong>the whole thing falls apart</strong>. A software team is exactly the same.</p>
+        <h3>Listen More Than You Play</h3>
+        <p>The best drummers I knew were also the best listeners. They could hear where the song was going before it got there. In teams, the best contributors are the ones who <strong>listen to understand, not just to respond</strong>.</p>
+        <blockquote>"The drummer who listens holds the band together. The analyst who listens holds the project together."</blockquote>
+        <h3>Timing Is Everything</h3>
+        <p>In music, a note played at the wrong time is noise. In business, a requirement delivered late is a risk. Timing matters in every domain.</p>
+    `},
+    post7:{tag:'Africa Tech',tagClass:'green',title:"Africa's Tech Wave Is Coming — Are We Ready?",meta:'Ntandoyenkosi Gumede · January 2026 · 7 min read',body:`
+        <p>I believe the next great technology movement is going to come from Africa. Not in spite of our challenges — but <strong>because of them</strong>. Necessity is the mother of invention, and Africa has necessity in abundance.</p>
+        <h3>The Evidence Is Already Here</h3>
+        <p>M-Pesa transformed mobile payments across East Africa. Nigeria's tech ecosystem produces world-class startups. South Africa has some of the most sophisticated banking infrastructure on the planet. The foundation is being built.</p>
+        <h3>What Needs to Change</h3>
+        <p>Access. A kid in rural KZN with the talent to build the next great app cannot do it without electricity, internet, and opportunity. We need <strong>infrastructure investment, learnerships, and mentorship pipelines</strong> that reach beyond the cities.</p>
+        <blockquote>"The next African unicorn might be sitting in a township right now — waiting for someone to open the door."</blockquote>
+        <h3>What I Plan to Do About It</h3>
+        <p>When I reach my goals at FNB and beyond, I plan to go back — to communities like Manguzi — and create the access that I had to work so hard to find. The talent is there. It has always been there. It just needs a door.</p>
+    `}
+};
+
+function openModal(id) {
+    const p = posts[id];
+    document.getElementById('modal-content').innerHTML = `
+        <span class="modal-tag ${p.tagClass}">${p.tag}</span>
+        <h2 class="modal-title">${p.title}</h2>
+        <p class="modal-meta">${p.meta}</p>
+        <div class="modal-body">${p.body}</div>
+    `;
+    document.getElementById('modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function closeModalOutside(e) {
+    if (e.target === document.getElementById('modal')) closeModal();
+}
+
+// Progress bar
+window.addEventListener('scroll', () => {
+    const s = document.documentElement.scrollTop;
+    const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById('progress-bar').style.width = (s / h * 100) + '%';
+    document.getElementById('back-to-top').classList.toggle('visible', s > 300);
+}, { passive: true });
+
+document.getElementById('back-to-top').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Reveal
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

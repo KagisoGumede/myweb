@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ntandoyenkosi Gumede — Business & Systems Analyst</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div id="progress-bar"></div>
+
+<!-- LOADING SCREEN -->
+<div id="loader">
+    <div class="loader-initials">NKG</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    <div class="loader-text">Loading Portfolio...</div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div id="custom-cursor"></div>
+<div id="cursor-dot"></div>
+
+<!-- WHATSAPP BUTTON -->
+<a id="whatsapp-btn" href="https://wa.me/27722880633?text=Hi%20Ntandoyenkosi%2C%20I%20saw%20your%20portfolio!" target="_blank">
+    <svg class="wa-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    Chat on WhatsApp
+</a>
+
+<!-- BACK TO TOP -->
+<button id="back-to-top" title="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<div class="noise-overlay"></div>
+
+<!-- NAVIGATION -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <span class="logo-initials">NKG</span>
+            <span class="logo-dot"></span>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#service" class="nav-link">Services</a></li>
+            <li><a href="#portfolio" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><a href="blog.html" class="nav-extra-btn">Blog</a></li>
+            <li><a href="about-me.html" class="nav-extra-btn">Meet Me</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+    <div class="hero-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Available for opportunities
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line title-line-1">Business &</span>
+                <span class="title-line title-line-2">Systems</span>
+                <span class="title-line title-line-3 italic-accent">Analyst</span>
+            </h1>
+            <p class="hero-subtitle">
+                I am a <strong id="typing-text" style="color:var(--accent)">Business Analyst</strong><span class="typing-cursor"></span><br>
+                Transforming complex business needs into elegant digital solutions.
+            </p>
+            <div class="hero-tags">
+                <span class="tag">Business Analysis</span>
+                <span class="tag">System Design</span>
+                <span class="tag">UI/UX</span>
+                <span class="tag">Java Dev</span>
+            </div>
+            <div class="hero-actions">
+                <a href="KagisoCv.pdf" download class="btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download CV
+                </a>
+                <a href="resume.html" class="btn-ghost">Interactive CV →</a>
+                <a href="#contact" class="btn-ghost">Let's Talk →</a>
+                <a href="about-me.html" class="btn-ghost">Meet Me →</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-number">1+</span><span class="stat-label">Years Experience</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat"><span class="stat-number">5+</span><span class="stat-label">Enterprise Systems</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat"><span class="stat-number">150+</span><span class="stat-label">Requirements Documented</span></div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="image-ring image-ring-outer"></div>
+            <div class="image-ring image-ring-inner"></div>
+            <div class="image-frame">
+                <img src="profile.jpeg" alt="Ntandoyenkosi Gumede">
+            </div>
+            <div class="image-badge image-badge-fnb"><span>FNB</span><small>Developer</small></div>
+            <div class="image-badge image-badge-tut"><span>TUT</span><small>Informatics</small></div>
+        </div>
+    </div>
+    <div class="scroll-indicator"><div class="scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- AI CHAT -->
+<button id="ai-chat-toggle" class="ai-chat-toggle">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span class="chat-pulse"></span>
+</button>
+<div id="ai-chat-window" class="ai-chat-window">
+    <div class="ai-chat-header">
+        <div class="chat-header-info">
+            <div class="chat-avatar">AI</div>
+            <div><span class="chat-name">Portfolio Assistant</span><span class="chat-status">● Online</span></div>
+        </div>
+        <button id="ai-chat-close" class="ai-chat-close">×</button>
+    </div>
+    <div id="ai-chat-messages" class="ai-chat-messages"></div>
+    <div class="ai-chat-input-area">
+        <textarea id="ai-chat-input" rows="1" placeholder="Ask about skills, projects, experience..."></textarea>
+        <button id="ai-chat-send">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Who I Am</span>
+            <h2 class="section-title">About Me</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-left">
+                <p class="about-text">Results-driven Informatics graduate with strong expertise in Business Analysis, Systems Analysis, IT Project Management, and Software Testing. Currently advancing full-stack development skills at <strong>First National Bank</strong> while maintaining excellence in requirements analysis, UML modelling, and stakeholder management.</p>
+                <p class="about-text">Skilled in translating complex business needs into actionable technical specifications, with hands-on experience in Agile environments.</p>
+                <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem;">
+                    <a href="KagisoCv.pdf" download class="btn-outline-accent">View Full CV <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="resume.html" class="btn-outline-accent">Interactive CV →</a>
+                    <a href="about-me.html" class="btn-outline-accent">My Story →</a>
+                </div>
+            </div>
+            <div class="about-right">
+                <div class="info-cards">
+                    <div class="info-card"><div class="info-icon"></div><div><h4>Software Dev Learner</h4><p>First National Bank (FNB)</p><span class="info-date">Sep 2024 – Present</span></div></div>
+                    <div class="info-card"><div class="info-icon"></div><div><h4>Business/Systems Analyst Intern</h4><p>Rain Cloud Company</p><span class="info-date">Jan 2024 – Aug 2024</span></div></div>
+                    <div class="info-card"><div class="info-icon"></div><div><h4>Advanced Diploma in Informatics</h4><p>Tshwane University of Technology</p><span class="info-date">2025 – Currently Studying 🟢</span></div></div>
+                    <div class="info-card"><div class="info-icon"></div><div><h4>Diploma in Informatics</h4><p>Tshwane University of Technology</p><span class="info-date">2022 – 2024 ✅</span></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="skills">Skills</button>
+            <button class="tab-btn" data-tab="experience">Experience</button>
+            <button class="tab-btn" data-tab="education">Education</button>
+            <button class="tab-btn" data-tab="certification">Certifications</button>
+            <button class="tab-btn" data-tab="testimonial">Testimonials</button>
+        </div>
+
+        <div class="tab-content active" id="skills">
+            <div class="skills-grid">
+                <div class="skill-item"><div class="skill-header"><span>Business Analyst</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-progress" style="width:95%"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>System Analyst</span><span class="skill-pct">96%</span></div><div class="skill-bar"><div class="skill-progress" style="width:96%"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>IT Project Manager</span><span class="skill-pct">50%</span></div><div class="skill-bar"><div class="skill-progress" style="width:50%"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Java Full Stack Developer</span><span class="skill-pct">50%</span></div><div class="skill-bar"><div class="skill-progress" style="width:50%"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Database Administrator</span><span class="skill-pct">70%</span></div><div class="skill-bar"><div class="skill-progress" style="width:70%"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Software Tester</span><span class="skill-pct">60%</span></div><div class="skill-bar"><div class="skill-progress" style="width:60%"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>UI/UX Designer</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-progress" style="width:80%"></div></div></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="experience">
+            <div class="timeline">
+                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date">September 2024 – Present</span><h3>Software Developer Learnership</h3><h4>First National Bank (FNB)</h4><p>Leading BA/SA functions for 2 banking modules. Spring Boot back-end, JSP front-end. 95%+ test coverage across 8+ sprints.</p></div></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date">January 2024 – August 2024</span><h3>Business/Systems Analyst Intern</h3><h4>Rain Cloud Company</h4><p>Documented 150+ requirements across 3 enterprise systems. Created 40+ UML diagrams. 25+ UI/UX mockups with 90% approval rate.</p></div></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="education">
+            <div class="timeline">
+                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date" style="color:#22dd88">2025 – Present 🟢 Currently Studying</span><h3>Advanced Diploma in Informatics</h3><h4>Tshwane University of Technology</h4><p>Deepening expertise in Systems Analysis, Advanced Database Management, Enterprise Architecture, and IT Management.</p></div></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date">2022 – 2024 ✅ Completed</span><h3>Diploma in Informatics</h3><h4>Tshwane University of Technology</h4><p>Systems Analysis & Design, Database Management, Software Engineering, Project Management, Business Analysis, Software Testing.</p></div></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><span class="timeline-date">2021 ✅ Completed</span><h3>National Senior Certificate (Matric)</h3><h4>Nodineka High School</h4><p>Stream: Science and Mathematics</p></div></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="certification">
+            <div class="cert-grid">
+                <div class="cert-card"><div class="cert-icon"></div><h3>EthicCraft: Mastering Workplace Excellence</h3><p class="cert-org">Geeks4Learning</p><p class="cert-year">January 2026</p><p class="cert-skills">Workplace Ethics, Professional Excellence, Compliance</p><div class="cert-buttons"><a href="Certificate_of_Course_Completion__2_.pdf" target="_blank" class="cert-btn outline">View</a><a href="Certificate_of_Course_Completion__2_.pdf" download class="cert-btn">Download</a></div></div>
+                <div class="cert-card"><div class="cert-icon"></div><h3>Getting Started with Java</h3><p class="cert-org">Skillsoft</p><p class="cert-year">February 2026</p><p class="cert-skills">Java Programming, OOP Fundamentals, Software Development</p><div class="cert-buttons"><a href="RunningJavaPrograms.pdf" target="_blank" class="cert-btn outline">View</a><a href="RunningJavaPrograms.pdf" download class="cert-btn">Download</a></div></div>
+                <div class="cert-card"><div class="cert-icon"></div><h3>Diploma in Informatics</h3><p class="cert-org">Tshwane University of Technology</p><p class="cert-year">2024</p><p class="cert-skills">Business Analysis, UML Modelling, Database Design, Project Management</p><div class="cert-buttons"><a href="certificates/Diploma-Informatics.pdf" target="_blank" class="cert-btn outline">View</a><a href="certificates/Diploma-Informatics.pdf" download class="cert-btn">Download</a></div></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="testimonial">
+            <div class="testimonial-container">
+                <div class="testimonial-card"><div class="testimonial-quote">"</div><p class="testimonial-message">He consistently translated complex business requirements into structured system solutions. His communication with stakeholders was professional and effective.</p><div class="testimonial-footer"><div class="testimonial-image"><img src="Mthembu.jpeg" alt="Mncedisi Mthembu"></div><div><h4 class="testimonial-name">Mncedisi Mthembu</h4><p class="testimonial-role">Software Developer</p><div class="testimonial-contact"><span>📞 073 725 6778</span></div></div></div></div>
+                <div class="testimonial-card"><div class="testimonial-quote">"</div><p class="testimonial-message">A highly disciplined and detail-oriented analyst. His contribution to UML design and requirement validation significantly improved project delivery timelines.</p><div class="testimonial-footer"><div class="testimonial-image"><img src="Nhlanhla.jpeg" alt="Nhlanhla Malatji"></div><div><h4 class="testimonial-name">Nhlanhla Malatji</h4><p class="testimonial-role">Data Scientist</p><div class="testimonial-contact"><span>📞 060 364 4560</span></div></div></div></div>
+            </div>
+        </div>
+
+        <div class="tools-used">
+            <h4 class="tools-title">Tools & Technologies</h4>
+            <div class="tools-track-wrapper">
+                <div class="tools-track">
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/postman.png" alt="Postman"><span class="tool-name">Postman</span></div>
+                    <div class="tool-item"><img src="https://www.postgresql.org/media/img/about/press/elephant.png" alt="PostgreSQL"><span class="tool-name">PostgreSQL</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/figma--v1.png" alt="Figma"><span class="tool-name">Figma</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/intellij-idea.png" alt="IntelliJ"><span class="tool-name">IntelliJ</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/visual-studio-code-2019.png" alt="VS Code"><span class="tool-name">VS Code</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/java-coffee-cup-logo--v1.png" alt="Java"><span class="tool-name">Java</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/microsoft-excel-2019.png" alt="Excel"><span class="tool-name">Excel</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/power-bi-2021.png" alt="Power BI"><span class="tool-name">Power BI</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/mysql-logo.png" alt="MySQL"><span class="tool-name">MySQL</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/jira.png" alt="Jira"><span class="tool-name">Jira</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/confluence.png" alt="Confluence"><span class="tool-name">Confluence</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/github.png" alt="GitHub"><span class="tool-name">GitHub</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/postman.png" alt="Postman"><span class="tool-name">Postman</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/figma--v1.png" alt="Figma"><span class="tool-name">Figma</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/java-coffee-cup-logo--v1.png" alt="Java"><span class="tool-name">Java</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/jira.png" alt="Jira"><span class="tool-name">Jira</span></div>
+                    <div class="tool-item"><img src="https://img.icons8.com/color/48/github.png" alt="GitHub"><span class="tool-name">GitHub</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="service" class="skills-action">
+    <div class="container">
+        <div class="section-header"><span class="section-label">What I Do</span><h2 class="section-title">Skills in Action</h2></div>
+        <div class="services-grid">
+            <div class="service-card"><div class="service-number">01</div><div class="service-icon"></div><h3>Business Analyst</h3><p>Requirements elicitation, user stories, business process modelling, UAT coordination, and API documentation.</p><div class="service-tags"><span>BRD/SRS</span><span>Traceability</span><span>UAT</span><span>Postman</span></div></div>
+            <div class="service-card"><div class="service-number">02</div><div class="service-icon"></div><h3>System Analyst</h3><p>System design, UML modelling, database schema design, integration analysis, and technical documentation.</p><div class="service-tags"><span>UML</span><span>ERD</span><span>Data Modelling</span><span>API Spec</span></div></div>
+            <div class="service-card"><div class="service-number">03</div><div class="service-icon"></div><h3>IT Project Management</h3><p>Project planning, WBS, risk management, stakeholder communication, and Agile/Waterfall delivery.</p><div class="service-tags"><span>Agile/Scrum</span><span>Jira</span><span>Risk Mgmt</span><span>Waterfall</span></div></div>
+            <div class="service-card"><div class="service-number">04</div><div class="service-icon"></div><h3>Java Full-Stack Developer</h3><p>Spring Boot backend, RESTful APIs, JSP frontend, PostgreSQL database design, and code review.</p><div class="service-tags"><span>Spring Boot</span><span>Java</span><span>REST APIs</span><span>PostgreSQL</span></div></div>
+            <div class="service-card"><div class="service-number">05</div><div class="service-icon"></div><h3>UI/UX Designer</h3><p>User research, wireframing, high-fidelity prototyping, design systems, and usability testing.</p><div class="service-tags"><span>Figma</span><span>Wireframing</span><span>Prototyping</span><span>User Research</span></div></div>
+            <div class="service-card"><div class="service-number">06</div><div class="service-icon"></div><h3>Software Tester</h3><p>Test case creation, system testing, UAT coordination, defect management, and regression testing.</p><div class="service-tags"><span>Test Cases</span><span>UAT</span><span>Defect Logging</span><span>JUnit</span></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <div class="section-header"><span class="section-label">My Work</span><h2 class="section-title">Key Projects</h2></div>
+        <div class="projects-horizontal">
+            <div class="projects-wrapper">
+                <div class="project-slide"><div class="project-card"><div class="project-number">01</div><h3>Personal Portfolio Website with AI Chatbot</h3><p>Fully responsive portfolio with an AI chatbot for real-time visitor interaction.</p><ul><li>Modern responsive UI/UX for all devices</li><li>Interactive JS features & performance optimization</li><li>AI chatbot with knowledge-base keyword matching</li></ul><p class="role"><strong>Role:</strong> Frontend Developer | UI/UX Designer</p></div></div>
+                <div class="project-slide"><div class="project-card"><div class="project-number">02</div><h3>Vehicle Information Management System (VIIMS)</h3><p>Centralized system for vehicle impoundment — capture, storage, towing, payments, and release.</p><ul><li>End-to-end requirements gathering & documentation</li><li>40+ UML diagrams (Use Case, Activity, Sequence, ERD)</li><li>Workflow automation reducing processing time by 60%</li></ul><p class="role"><strong>Role:</strong> Business Analyst | System Analyst | UI/UX Designer</p></div></div>
+                <div class="project-slide"><div class="project-card"><div class="project-number">03</div><h3>GIIMS – Goods Impound Information Management System</h3><p>System for managing impounded goods with 99%+ accuracy through robust data validation.</p><ul><li>Comprehensive system analysis & process improvement</li><li>Data validation rules ensuring inventory accuracy</li><li>UAT participation and defect logging</li></ul><p class="role"><strong>Role:</strong> Business Analyst | System Analyst | UI/UX Designer</p></div></div>
+                <div class="project-slide"><div class="project-card"><div class="project-number">04</div><h3>Bank Transaction System Module — FNB</h3><p>Transaction tracking module at FNB handling 1,000+ daily transactions.</p><ul><li>Spring Boot RESTful API endpoints for core banking</li><li>95%+ test coverage, resolving 30+ defects</li><li>JSP front-end for 500+ daily users</li></ul><p class="role"><strong>Role:</strong> BA | Systems Analyst | Developer</p></div></div>
+                <div class="project-slide"><div class="project-card"><div class="project-number">05</div><h3>Employee Leave Management System</h3><p>System for leave requests, approvals, and records management.</p><ul><li>Requirements gathering & user flow design</li><li>UI screens and functional specifications</li><li>Frontend/backend implementation support</li></ul><p class="role"><strong>Role:</strong> BA | System Analyst | UI/UX Designer | Developer</p></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+    <div class="container">
+        <div class="section-header"><span class="section-label">Get In Touch</span><h2 class="section-title">Contact Me</h2></div>
+        <div class="contact-wrapper">
+            <div class="contact-left">
+                <p class="contact-intro">Have a project in mind or want to discuss an opportunity? Let's build something impactful together.</p>
+                <div class="contact-links">
+                    <a href="mailto:mazwi739@gmail.com" class="contact-link"><div class="contact-link-icon">✉️</div><div><span class="contact-link-label">Email</span><span class="contact-link-value">mazwi739@gmail.com</span></div></a>
+                    <a href="tel:0722880633" class="contact-link"><div class="contact-link-icon">📞</div><div><span class="contact-link-label">Phone</span><span class="contact-link-value">0722 880 633</span></div></a>
+                    <a href="https://wa.me/27722880633" target="_blank" class="contact-link"><div class="contact-link-icon">💬</div><div><span class="contact-link-label">WhatsApp</span><span class="contact-link-value">Chat with me directly</span></div></a>
+                    <a href="https://www.linkedin.com/in/ntandoyenkosi-gumede-3428a3309/" target="_blank" class="contact-link"><div class="contact-link-icon">💼</div><div><span class="contact-link-label">LinkedIn</span><span class="contact-link-value">ntandoyenkosi-gumede</span></div></a>
+                </div>
+            </div>
+            <div class="contact-right">
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" name="name" placeholder="e.g. Jane Smith" required></div>
+                    <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="jane@example.com" required></div>
+                    <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell me about your project..." rows="5" required></textarea></div>
+                    <button type="submit" class="btn-primary btn-full">Send Message <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+                    <div id="formMessage" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo"><span class="logo-initials">NKG</span><span>Ntandoyenkosi Kagiso Gumede</span></div>
+            <p class="footer-tagline">Business & Systems Analyst · Informatics Graduate · FNB Developer</p>
+            <div class="footer-links">
+                <a href="#home">Home</a><a href="#about">About</a><a href="#service">Services</a>
+                <a href="#portfolio">Projects</a><a href="#contact">Contact</a>
+                <a href="blog.html">Blog</a><a href="about-me.html">Meet Me</a><a href="resume.html">Interactive CV</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Ntandoyenkosi Gumede. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="script.js"></script>
+<script src="ai-chat.js"></script>
+<script>
+// Loading screen
+window.addEventListener('load',()=>{
+    const l=document.getElementById('loader');
+    if(l){setTimeout(()=>{l.style.opacity='0';setTimeout(()=>l.remove(),600);},1800);}
+});
+// Typing animation
+const te=document.getElementById('typing-text');
+if(te){
+    const roles=['Business Analyst','Systems Analyst','Java Developer','UI/UX Designer','IT Project Manager'];
+    let ri=0,ci=0,del=false;
+    function type(){
+        const cur=roles[ri];
+        te.textContent=del?cur.substring(0,ci-1):cur.substring(0,ci+1);
+        del?ci--:ci++;
+        if(!del&&ci===cur.length){setTimeout(()=>del=true,1800);setTimeout(type,2000);return;}
+        if(del&&ci===0){del=false;ri=(ri+1)%roles.length;}
+        setTimeout(type,del?60:100);
+    }
+    setTimeout(type,2500);
+}
+// Progress bar
+const pb=document.getElementById('progress-bar');
+if(pb){window.addEventListener('scroll',()=>{const s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-document.documentElement.clientHeight;pb.style.width=(s/h*100)+'%';},{passive:true});}
+// Back to top
+const btt=document.getElementById('back-to-top');
+if(btt){
+    window.addEventListener('scroll',()=>btt.classList.toggle('visible',window.scrollY>400),{passive:true});
+    btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+}
+// Custom cursor
+const cur=document.getElementById('custom-cursor'),dot=document.getElementById('cursor-dot');
+if(cur&&dot&&!('ontouchstart' in window)){
+    let mx=0,my=0,cx=0,cy=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+    (function a(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(a);})();
+    document.querySelectorAll('a,button,.service-card,.project-card,.tab-btn').forEach(el=>{
+        el.addEventListener('mouseenter',()=>cur.classList.add('hover'));
+        el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));
+    });
+    document.addEventListener('mousedown',()=>cur.classList.add('click'));
+    document.addEventListener('mouseup',()=>cur.classList.remove('click'));
+}
+</script>
+</body>
+</html>

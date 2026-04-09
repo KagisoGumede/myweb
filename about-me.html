@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ntandoyenkosi — The Person Behind the Work</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary:#050f14;--surface:#091a22;--card:#0d2535;
+            --border:rgba(0,212,255,0.12);--border-strong:rgba(0,212,255,0.3);
+            --accent:#00d4ff;--accent-dim:rgba(0,212,255,0.1);
+            --gold:#c9a84c;--gold-dim:rgba(201,168,76,0.15);
+            --text:#e8f4f8;--text-muted:rgba(232,244,248,0.65);--text-faint:rgba(232,244,248,0.32);
+            --gradient:linear-gradient(135deg,#00d4ff 0%,#0099cc 100%);
+            --gradient-gold:linear-gradient(135deg,#c9a84c 0%,#e8c96a 100%);
+            --shadow:0 8px 32px rgba(0,0,0,0.5);
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Outfit',sans-serif;background:var(--primary);color:var(--text);line-height:1.65;overflow-x:hidden;}
+        ::-webkit-scrollbar{width:5px;}
+        ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px;}
+
+        .back-btn{
+            position:fixed;top:24px;left:24px;z-index:100;
+            display:inline-flex;align-items:center;gap:8px;
+            background:rgba(9,26,34,0.92);border:1px solid var(--border-strong);
+            color:var(--accent);padding:10px 18px;border-radius:50px;
+            text-decoration:none;font-size:.85rem;font-weight:600;
+            backdrop-filter:blur(14px);transition:all .3s ease;
+        }
+        .back-btn:hover{background:var(--accent-dim);transform:translateX(-3px);}
+
+        .page-hero{
+            min-height:100vh;display:flex;align-items:center;justify-content:center;
+            position:relative;overflow:hidden;padding:6rem 2rem 4rem;
+        }
+        .hero-bg-text{
+            position:absolute;font-family:'Cormorant Garamond',serif;
+            font-size:clamp(6rem,18vw,16rem);font-weight:700;
+            color:rgba(0,212,255,0.025);top:50%;left:50%;
+            transform:translate(-50%,-50%);white-space:nowrap;
+            pointer-events:none;user-select:none;
+        }
+        .orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;}
+        .orb-a{width:500px;height:500px;background:rgba(0,150,200,0.1);top:-150px;right:-100px;animation:driftA 14s ease-in-out infinite;}
+        .orb-b{width:300px;height:300px;background:rgba(201,168,76,0.07);bottom:0;left:-50px;animation:driftB 18s ease-in-out infinite;}
+        @keyframes driftA{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,40px)}}
+        @keyframes driftB{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-30px)}}
+
+        .hero-inner{position:relative;z-index:2;text-align:center;max-width:780px;}
+        .page-label{
+            display:inline-block;font-size:.75rem;font-weight:700;
+            letter-spacing:4px;text-transform:uppercase;color:var(--gold);
+            border:1px solid rgba(201,168,76,0.3);background:rgba(201,168,76,0.08);
+            padding:6px 16px;border-radius:50px;margin-bottom:1.5rem;
+            animation:fadeUp .8s .1s ease-out both;
+        }
+        .page-title{
+            font-family:'Cormorant Garamond',serif;
+            font-size:clamp(3rem,8vw,6rem);font-weight:700;line-height:1.05;
+            margin-bottom:1.5rem;animation:fadeUp .8s .2s ease-out both;
+        }
+        .page-title em{font-style:italic;color:var(--accent);}
+        .page-subtitle{
+            font-size:1.1rem;color:var(--text-muted);max-width:580px;
+            margin:0 auto 2rem;line-height:1.8;animation:fadeUp .8s .35s ease-out both;
+        }
+        .origin-badge{
+            display:inline-flex;align-items:center;gap:8px;
+            background:var(--card);border:1px solid var(--border-strong);
+            border-radius:50px;padding:8px 20px;margin-bottom:2.5rem;
+            font-size:.9rem;color:var(--text-muted);animation:fadeUp .8s .45s ease-out both;
+        }
+        .origin-badge strong{color:var(--text);}
+        .scroll-hint{display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeUp .8s .55s ease-out both;}
+        .scroll-hint span{font-size:.72rem;color:var(--text-faint);letter-spacing:2px;text-transform:uppercase;}
+        .scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,transparent,var(--accent));animation:scrollPulse 2s ease-in-out infinite;}
+        @keyframes scrollPulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+        .section{padding:6rem 0;position:relative;z-index:1;}
+        .section.alt{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+        .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+        .sec-label{font-size:.72rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.5rem;}
+        .sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:3rem;position:relative;display:inline-block;}
+        .sec-title::after{content:'';position:absolute;bottom:-8px;left:0;width:50px;height:2px;background:var(--gradient);}
+
+        .origin-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+        .origin-text p{color:var(--text-muted);font-size:1.05rem;line-height:1.9;margin-bottom:1.25rem;}
+        .origin-text p strong{color:var(--text);}
+
+        .profile-img-wrap{position:relative;}
+        .profile-img-frame{width:100%;aspect-ratio:3/4;border-radius:20px;overflow:hidden;border:1px solid var(--border-strong);box-shadow:var(--shadow),0 0 50px rgba(0,212,255,0.1);}
+        .profile-img-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+        .profile-location{position:absolute;bottom:-18px;left:-18px;background:var(--card);border:1px solid var(--border-strong);border-radius:14px;padding:.9rem 1.3rem;box-shadow:var(--shadow);}
+        .profile-location .loc-main{display:block;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--accent);line-height:1;}
+        .profile-location small{font-size:.78rem;color:var(--text-faint);}
+
+        .quote-block{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 16px 16px 0;padding:2rem 2.5rem;margin:3rem 0;}
+        .quote-mark{font-family:'Cormorant Garamond',serif;font-size:6rem;color:var(--accent);opacity:.2;line-height:.6;display:block;margin-bottom:.5rem;}
+        .quote-text{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;color:var(--text);line-height:1.5;}
+        .quote-author{margin-top:1rem;font-size:.85rem;color:var(--accent);font-weight:600;letter-spacing:1px;}
+
+        .roots-highlight{
+            background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(0,212,255,0.05));
+            border:1px solid rgba(201,168,76,0.2);border-radius:20px;padding:2.5rem;
+            margin:3rem 0;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center;
+        }
+        .root-stat .r-icon{font-size:2.2rem;display:block;margin-bottom:.5rem;}
+        .root-stat .r-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--gold);display:block;line-height:1;}
+        .root-stat .r-label{font-size:.8rem;color:var(--text-muted);margin-top:4px;line-height:1.4;}
+
+        .journey-timeline{position:relative;padding-left:2.5rem;}
+        .journey-timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--accent),var(--gold),transparent);}
+        .journey-item{position:relative;margin-bottom:2rem;}
+        .journey-dot{position:absolute;left:-2.5rem;top:6px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);box-shadow:0 0 10px rgba(0,212,255,0.4);}
+        .journey-content{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;transition:all .3s ease;}
+        .journey-content:hover{border-color:var(--border-strong);transform:translateX(4px);}
+        .journey-era{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+        .journey-content h3{font-size:1.05rem;font-weight:600;margin-bottom:6px;}
+        .journey-content p{font-size:.9rem;color:var(--text-muted);line-height:1.7;}
+
+        .media-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+        .media-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .35s ease;}
+        .media-card:hover{border-color:var(--border-strong);transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.4);}
+        .media-card video,.media-card img{width:100%;display:block;background:#000;}
+        .media-card video{max-height:340px;object-fit:cover;}
+        .media-card img{height:260px;object-fit:cover;}
+        .media-caption{padding:1rem 1.25rem;}
+        .media-caption h4{font-size:.95rem;font-weight:600;margin-bottom:4px;}
+        .media-caption p{font-size:.82rem;color:var(--text-muted);}
+
+        .hobbies-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+        .hobby-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem 1.5rem;text-align:center;transition:all .35s ease;overflow:hidden;}
+        .hobby-card:hover{border-color:var(--border-strong);transform:translateY(-8px);box-shadow:0 16px 40px rgba(0,0,0,0.4);}
+        .hobby-card.featured{border-color:rgba(201,168,76,0.3);}
+        .hobby-emoji{font-size:2.8rem;display:block;margin-bottom:1rem;}
+        .hobby-card h3{font-size:1.05rem;font-weight:600;margin-bottom:.5rem;}
+        .hobby-card p{font-size:.85rem;color:var(--text-muted);line-height:1.6;}
+
+        .values-list{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+        .value-item{display:flex;gap:1.25rem;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;transition:all .3s ease;}
+        .value-item:hover{border-color:var(--border-strong);transform:translateX(4px);}
+        .value-icon{font-size:2rem;flex-shrink:0;width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:var(--accent-dim);border-radius:12px;border:1px solid var(--border);}
+        .value-item h4{font-size:1rem;font-weight:600;margin-bottom:4px;}
+        .value-item p{font-size:.88rem;color:var(--text-muted);line-height:1.6;}
+
+        .vision-box{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:3.5rem;position:relative;overflow:hidden;}
+        .vision-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-gold);}
+        .vision-bg-num{position:absolute;right:2rem;bottom:1rem;font-family:'Cormorant Garamond',serif;font-size:8rem;font-weight:700;color:rgba(201,168,76,0.05);line-height:1;pointer-events:none;}
+        .vision-box h3{font-family:'Cormorant Garamond',serif;font-size:2rem;font-style:italic;color:var(--gold);margin-bottom:1.5rem;}
+        .vision-box p{font-size:1.05rem;color:var(--text-muted);line-height:1.9;max-width:720px;margin-bottom:1.25rem;}
+        .vision-box p strong{color:var(--text);}
+        .vision-goals{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem;}
+        .vision-goal{background:var(--gold-dim);border:1px solid rgba(201,168,76,0.25);color:var(--gold);padding:6px 16px;border-radius:50px;font-size:.82rem;font-weight:600;}
+
+        .philosophy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+        .phil-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;transition:all .3s ease;position:relative;overflow:hidden;}
+        .phil-card:hover{border-color:var(--border-strong);transform:translateY(-5px);}
+        .phil-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gradient);transform:scaleX(0);transform-origin:left;transition:transform .35s ease;}
+        .phil-card:hover::before{transform:scaleX(1);}
+        .phil-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:700;color:rgba(0,212,255,0.07);line-height:1;margin-bottom:.5rem;}
+        .phil-card h3{font-size:1.05rem;font-weight:600;margin-bottom:.75rem;color:var(--accent);}
+        .phil-card p{font-size:.88rem;color:var(--text-muted);line-height:1.7;}
+
+        .currently-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;}
+        .currently-card{display:flex;gap:1rem;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;transition:all .3s ease;}
+        .currently-card:hover{border-color:var(--border-strong);transform:translateX(5px);}
+        .currently-icon{font-size:1.6rem;flex-shrink:0;}
+        .currently-card h4{font-size:.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+        .currently-card p{font-size:.92rem;color:var(--text-muted);line-height:1.6;}
+
+        .cta-section{padding:6rem 0;text-align:center;}
+        .cta-box{background:var(--card);border:1px solid var(--border-strong);border-radius:28px;padding:4rem 3rem;max-width:700px;margin:0 auto;position:relative;overflow:hidden;}
+        .cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient);}
+        .cta-box h2{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;margin-bottom:1rem;line-height:1.2;}
+        .cta-box h2 em{font-style:italic;color:var(--accent);}
+        .cta-box p{color:var(--text-muted);font-size:1rem;margin-bottom:2.5rem;line-height:1.7;}
+        .cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+
+        .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--gradient);color:var(--primary);text-decoration:none;padding:.9rem 2rem;border-radius:50px;font-weight:700;font-size:.95rem;transition:all .3s ease;box-shadow:0 4px 20px rgba(0,212,255,0.3);}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,212,255,0.5);}
+        .btn-outline{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-strong);color:var(--accent);text-decoration:none;padding:.9rem 2rem;border-radius:50px;font-weight:600;font-size:.95rem;transition:all .3s ease;}
+        .btn-outline:hover{background:var(--accent-dim);transform:translateY(-2px);}
+
+        .footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem 0;text-align:center;}
+        .footer p{font-size:.82rem;color:var(--text-faint);}
+
+        .reveal{opacity:0;transform:translateY(25px);transition:opacity .65s ease,transform .65s ease;}
+        .reveal.visible{opacity:1;transform:translateY(0);}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+
+        @media(max-width:900px){
+            .origin-grid{grid-template-columns:1fr;}
+            .profile-img-wrap{max-width:380px;margin:0 auto;}
+            .hobbies-grid{grid-template-columns:1fr 1fr;}
+            .philosophy-grid{grid-template-columns:1fr 1fr;}
+            .values-list{grid-template-columns:1fr;}
+            .roots-highlight{grid-template-columns:repeat(2,1fr);}
+            .media-grid{grid-template-columns:1fr;}
+        }
+        @media(max-width:600px){
+            .hobbies-grid{grid-template-columns:1fr;}
+            .currently-grid{grid-template-columns:1fr;}
+            .philosophy-grid{grid-template-columns:1fr;}
+            .roots-highlight{grid-template-columns:repeat(2,1fr);gap:1rem;padding:1.5rem;}
+            .vision-box{padding:2rem;}
+            .cta-box{padding:2.5rem 1.5rem;}
+            .back-btn{top:16px;left:16px;padding:8px 14px;font-size:.8rem;}
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="back-btn">← Back to Portfolio</a>
+
+<!-- HERO -->
+<section class="page-hero">
+    <div class="hero-bg-text">MANGUZI</div>
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="hero-inner">
+        <span class="page-label">Beyond the Resume</span>
+        <h1 class="page-title">From Rural<br><em>KwaZulu-Natal</em><br>to Joburg Tech</h1>
+        <p class="page-subtitle">No electricity. 5km walks to school. Farming at dawn. Drums on Sunday. This is the real story behind the analyst, the developer, and the dreamer.</p>
+        <div class="origin-badge">📍 Born at <strong>&nbsp;Manguzi Hospital, KwaZulu-Natal&nbsp;</strong> 🇿🇦</div>
+        <div class="scroll-hint">
+            <div class="scroll-line"></div>
+            <span>Scroll to read my story</span>
+        </div>
+    </div>
+</section>
+
+<!-- MY STORY -->
+<section class="section alt">
+    <div class="container">
+        <span class="sec-label">My Story</span>
+        <h2 class="sec-title">Where I Come From</h2>
+        <div class="origin-grid">
+            <div class="origin-text reveal">
+                <p>I was born at <strong>Manguzi Hospital, KwaZulu-Natal</strong> — deep in a rural area where electricity was a luxury we simply did not have. My childhood was not easy, but it was rich in lessons that no classroom could ever teach.</p>
+                <p>Every morning I would wake up before sunrise and walk <strong>more than 5 kilometres to school</strong> and back in the afternoon — rain or shine. After school, life did not stop. There were <strong>cows to care for, crops to grow</strong>, and a community to feed. We grew our own food and sold produce locally — that was my first lesson in supply, demand, and understanding people's real needs.</p>
+                <p>I grew up surrounded by love — <strong>my grandmother, grandfather, father, and extended family</strong> who poured wisdom into me every single day. They taught me how to overcome challenges, how to be resilient, and that your circumstances do not define your ceiling.</p>
+                <p>It was in those years that I discovered a hidden gift — <strong>I could play the drums</strong>. Church became the stage where that talent grew. Every Sunday, the rhythm section was mine. Music taught me discipline, timing, and how to be part of something bigger than yourself — lessons I carry into every project I work on today.</p>
+                <div class="quote-block">
+                    <span class="quote-mark">"</span>
+                    <p class="quote-text">Growing up with nothing taught me how to make something out of everything.</p>
+                    <p class="quote-author">— Ntandoyenkosi Gumede</p>
+                </div>
+            </div>
+            <div class="profile-img-wrap reveal">
+                <div class="profile-img-frame">
+                    <img src="profile-image.jpeg" alt="Ntandoyenkosi Gumede">
+                </div>
+                <div class="profile-location">
+                    <span class="loc-main">KZN</span>
+                    <small>KwaZulu-Natal — Born & Raised 🌿</small>
+                </div>
+            </div>
+        </div>
+        <div class="roots-highlight reveal">
+            <div class="root-stat">
+                <span class="r-icon">🚶</span>
+                <span class="r-num">5km+</span>
+                <span class="r-label">Daily walk to school — every single day</span>
+            </div>
+            <div class="root-stat">
+                <span class="r-icon">🌾</span>
+                <span class="r-num">0</span>
+                <span class="r-label">Electricity growing up — pure resilience built</span>
+            </div>
+            <div class="root-stat">
+                <span class="r-icon">🥁</span>
+                <span class="r-num">∞</span>
+                <span class="r-label">Sundays on the drums at church</span>
+            </div>
+            <div class="root-stat">
+                <span class="r-icon">💪</span>
+                <span class="r-num">100%</span>
+                <span class="r-label">Self-made — from rural KZN to Joburg tech</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JOURNEY TIMELINE -->
+<section class="section">
+    <div class="container">
+        <span class="sec-label">The Journey</span>
+        <h2 class="sec-title">My Life Timeline</h2>
+        <div class="journey-timeline">
+            <div class="journey-item reveal">
+                <div class="journey-dot"></div>
+                <div class="journey-content">
+                    <span class="journey-era">Early Years</span>
+                    <h3>🌿 Born in Manguzi, KwaZulu-Natal</h3>
+                    <p>Raised in a rural community with no electricity. Life revolved around family, farming, livestock, and the church. These humble beginnings built the foundation of who I am — adaptable, hardworking, and deeply grateful.</p>
+                </div>
+            </div>
+            <div class="journey-item reveal">
+                <div class="journey-dot"></div>
+                <div class="journey-content">
+                    <span class="journey-era">Primary School</span>
+                    <h3>📖 Mengu Primary School</h3>
+                    <p>Started my formal education at Mengu Primary School — walking 5km each way through rural roads every single day. Curiosity was always my strongest subject. I wanted to understand how and why everything worked.</p>
+                </div>
+            </div>
+            <div class="journey-item reveal">
+                <div class="journey-dot"></div>
+                <div class="journey-content">
+                    <span class="journey-era">High School</span>
+                    <h3>🎓 Nodineka High School — Matric 2021</h3>
+                    <p>Completed my National Senior Certificate in Science and Mathematics. This was a major turning point — I knew technology and problem-solving were my future. I left with a certificate and a hunger to see the world beyond the rural hills.</p>
+                </div>
+            </div>
+            <div class="journey-item reveal">
+                <div class="journey-dot"></div>
+                <div class="journey-content">
+                    <span class="journey-era">University</span>
+                    <h3>💻 Diploma in Informatics — TUT 2022–2024</h3>
+                    <p>Moved to Johannesburg and enrolled at Tshwane University of Technology. Studied Systems Analysis, Database Management, Business Analysis, and Software Engineering. The rural kid with no electricity discovered he could build digital systems for thousands of people.</p>
+                </div>
+            </div>
+            <div class="journey-item reveal">
+                <div class="journey-dot"></div>
+                <div class="journey-content">
+                    <span class="journey-era">First Role</span>
+                    <h3>☁️ Business/Systems Analyst Intern — Rain Cloud 2024</h3>
+                    <p>Landed my first professional role — an 8-month internship where I documented 150+ requirements, designed 40+ UML diagrams, and worked across 3 enterprise systems. From growing crops to architecting data. The journey was becoming real.</p>
+                </div>
+            </div>
+            <div class="journey-item reveal">
+                <div class="journey-dot"></div>
+                <div class="journey-content">
+                    <span class="journey-era">Present Day</span>
+                    <h3>🏦 Software Developer Learnership — FNB 2024–Now</h3>
+                    <p>Today I build banking systems at one of South Africa's biggest banks — serving 500+ daily users, writing Spring Boot APIs, and leading BA/SA functions. From no electricity in KZN to powering digital finance in Johannesburg. The boy from Manguzi made it.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MEDIA -->
+<section class="section alt">
+    <div class="container">
+        <span class="sec-label">A Glimpse Into My World</span>
+        <h2 class="sec-title">Life in Motion</h2>
+        <div class="media-grid">
+            <div class="media-card reveal">
+                <img src="image2.jpeg" alt="My passion — the drums">
+                <div class="media-caption">
+                    <h4>My Passion — The Drums</h4>
+                    <p>A gift discovered in church back in KwaZulu-Natal. The beat that started it all.</p>
+                </div>
+            </div>
+            <div class="media-card reveal">
+                <iframe
+                    src="https://www.youtube.com/embed/GfiMHScPB8c"
+                    title="A Moment from My World"
+                    frameborder="0"
+                    allowfullscreen
+                    style="width:100%; aspect-ratio:9/16; border-radius:8px;">
+                </iframe>
+                <div class="media-caption">
+                    <h4>🎬 A Moment from My World</h4>
+                    <p>Real life, real moments — beyond the professional profile.</p>
+                </div>
+            </div>
+            <div class="media-card reveal">
+                <iframe
+                    src="https://www.youtube.com/embed/UZXSKdwvQ48"
+                    title="Another Side of Kagiso"
+                    frameborder="0"
+                    allowfullscreen
+                    style="width:100%; aspect-ratio:9/16; border-radius:8px;">
+                </iframe>
+                <div class="media-caption">
+                    <h4>📸 Another Side of Kagiso</h4>
+                    <p>Life outside the office — authentic and unfiltered.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOBBIES -->
+<section class="section">
+    <div class="container">
+        <span class="sec-label">Life Outside Work</span>
+        <h2 class="sec-title">Hobbies & Interests</h2>
+        <div class="hobbies-grid">
+            <div class="hobby-card featured reveal">
+                <span class="hobby-emoji"></span>
+                <h3>Playing Drums ⭐</h3>
+                <p>Discovered this gift in church back in rural KZN. The drums taught me rhythm, discipline, and presence. Music is still my therapy — when the code is frustrating, the beat always brings clarity.</p>
+            </div>
+           
+            <div class="hobby-card reveal">
+                <span class="hobby-emoji"></span>
+                <h3>Reading & Learning</h3>
+                <p>Constantly reading — tech articles, business books, African history, self-development. The boy who walked 5km to school never stopped being hungry for knowledge.</p>
+            </div>
+            <div class="hobby-card reveal">
+                <span class="hobby-emoji"></span>
+                <h3>Building Side Projects</h3>
+                <p>I love tinkering with code and designing interfaces in spare time. This very portfolio is one of those projects. Building for fun keeps creativity alive and skills sharp.</p>
+            </div>
+            <div class="hobby-card reveal">
+                <span class="hobby-emoji"></span>
+                <h3>Exploring Mzansi</h3>
+                <p>There is so much beauty in South Africa I am still discovering. Road trips, local food, new cities — exploring keeps me grounded and connected to where I come from.</p>
+            </div>
+            <div class="hobby-card reveal">
+                <span class="hobby-emoji"></span>
+                <h3>My Rural Roots</h3>
+                <p>Farming, cattle, community life — I carry those roots with pride. Growing up without electricity did not limit me. It taught me that human will is more powerful than any resource.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VALUES -->
+<section class="section alt">
+    <div class="container">
+        <span class="sec-label">What Drives Me</span>
+        <h2 class="sec-title">My Core Values</h2>
+        <div class="values-list">
+            <div class="value-item reveal">
+                <div class="value-icon"></div>
+                <div><h4>Rooted in Resilience</h4><p>I grew up with nothing — no electricity, no shortcuts. That gave me a resilience no challenge in tech can shake. If I could walk 5km to school in the dark, I can solve any problem.</p></div>
+            </div>
+            <div class="value-item reveal">
+                <div class="value-icon"></div>
+                <div><h4>Community First</h4><p>I come from a community that survived through togetherness. In tech, I carry that same spirit — success means nothing if it does not lift the people around you.</p></div>
+            </div>
+            <div class="value-item reveal">
+                <div class="value-icon"></div>
+                <div><h4>Never Stop Growing</h4><p>From rural KZN to FNB Johannesburg — I am living proof that growth has no limits. Every day is a new 5km walk. I show up and I move forward.</p></div>
+            </div>
+            <div class="value-item reveal">
+                <div class="value-icon"></div>
+                <div><h4>Integrity Always</h4><p>My grandparents taught me that a person's word is their most valuable asset. In every project and every interaction — I am someone you can trust completely.</p></div>
+            </div>
+            <div class="value-item reveal">
+                <div class="value-icon"></div>
+                <div><h4>Adapt to Everything</h4><p>From no electricity to tech labs — I learned to adapt to any situation. Change does not scare me. It excites me.</p></div>
+            </div>
+            <div class="value-item reveal">
+                <div class="value-icon"></div>
+                <div><h4>Represent & Give Back</h4><p>I want to be the person that township kids look at and believe — "if he made it, so can I." Mentoring the next generation from rural areas into tech is not just a goal. It is a responsibility.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VISION -->
+<section class="section">
+    <div class="container">
+        <span class="sec-label">Where I'm Going</span>
+        <h2 class="sec-title">My Vision</h2>
+        <div class="vision-box reveal">
+            <div class="vision-bg-num">2030</div>
+            <h3>From Manguzi to Making History</h3>
+            <p>A boy who grew up without electricity in rural KwaZulu-Natal is now building <strong>banking systems that serve thousands of South Africans</strong>. But that is just the beginning.</p>
+            <p>My vision is to grow into a <strong>Senior Business & Systems Analyst</strong> who leads enterprise-scale digital transformation — the kind that changes how people in Africa access finance, healthcare, and education.</p>
+            <p>The bigger dream? To one day help build a <strong>proudly South African tech company</strong> solving real African problems. I believe the next great tech wave is going to come from this continent — and I want to be one of the people who makes that happen.</p>
+            <p>And when I get there, I will go back — to communities like mine in KZN — and <strong>open the door for the next kid</strong> who is walking 5km to school dreaming of a bigger life.</p>
+            <div class="vision-goals">
+                <span class="vision-goal"> Senior BA/SA Role</span>
+                <span class="vision-goal"> PMP Certification</span>
+                <span class="vision-goal"> Lead Enterprise Projects</span>
+                <span class="vision-goal"> African Tech Impact</span>
+                <span class="vision-goal"> Mentor Township Kids</span>
+                <span class="vision-goal"> Build a Tech Product</span>
+                <span class="vision-goal"> Never Stop Playing Drums</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="section alt">
+    <div class="container">
+        <span class="sec-label">How I Think</span>
+        <h2 class="sec-title">My Work Philosophy</h2>
+        <div class="philosophy-grid">
+            <div class="phil-card reveal">
+                <div class="phil-num">01</div>
+                <h3>Listen Before You Solve</h3>
+                <p>I grew up listening to elders before speaking. Same in tech — understand the real problem before jumping to solutions nobody asked for.</p>
+            </div>
+            <div class="phil-card reveal">
+                <div class="phil-num">02</div>
+                <h3>Simple Beats Clever</h3>
+                <p>The clearest requirement is the best requirement. Strip the jargon. A good spec should not need a translator.</p>
+            </div>
+            <div class="phil-card reveal">
+                <div class="phil-num">03</div>
+                <h3>Own It End-to-End</h3>
+                <p>From elicitation through UAT — I follow the work because I care about outcomes, not just outputs.</p>
+            </div>
+            <div class="phil-card reveal">
+                <div class="phil-num">04</div>
+                <h3>Collaboration Over Heroics</h3>
+                <p>Farming is a team effort. So is building great software. I would rather lift the whole team than shine alone.</p>
+            </div>
+            <div class="phil-card reveal">
+                <div class="phil-num">05</div>
+                <h3>Embrace the Uncertain</h3>
+                <p>I grew up adapting to whatever life brought. Staying calm in ambiguity and turning it into a structured plan is one of my greatest strengths.</p>
+            </div>
+            <div class="phil-card reveal">
+                <div class="phil-num">06</div>
+                <h3>Every Problem Has a Beat</h3>
+                <p>Like drumming — every complex problem has a rhythm and a pattern. Once you find it, the chaos becomes music.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CURRENTLY -->
+<section class="section">
+    <div class="container">
+        <span class="sec-label">Right Now</span>
+        <h2 class="sec-title">Currently...</h2>
+        <div class="currently-grid">
+            <div class="currently-card reveal">
+                <div class="currently-icon"></div>
+                <div><h4>Working</h4><p>Software Developer Learnership at FNB — building banking systems used by thousands of South Africans every single day.</p></div>
+            </div>
+            <div class="currently-card reveal">
+                <div class="currently-icon"></div>
+                <div><h4>Learning</h4><p>Deepening Spring Boot & Java skills, exploring React.js, and studying towards PMP certification between sprint ceremonies.</p></div>
+            </div>
+            <div class="currently-card reveal">
+                <div class="currently-icon"></div>
+                <div><h4>Playing</h4><p>Still finding time for the drums. When the code is frustrating, the rhythm always brings clarity back.</p></div>
+            </div>
+            <div class="currently-card reveal">
+                <div class="currently-icon"></div>
+                <div><h4>Working Towards</h4><p>Becoming a tech leader who bridges business and development — and going back to communities like mine to open doors for the next generation.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-box reveal">
+            <h2>Let's Connect <em>Beyond the CV</em></h2>
+            <p>From Manguzi to Johannesburg — every step of this journey has prepared me for what is next. Whether it is a job, a collaboration, or a conversation about Africa's digital future — I would love to connect.</p>
+            <div class="cta-buttons">
+                <a href="index.html#contact" class="btn-primary">Get In Touch →</a>
+                <a href="index.html" class="btn-outline">← View My Work</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026 Ntandoyenkosi Kagiso Gumede · From Manguzi, KZN to Johannesburg 🇿🇦</p>
+    </div>
+</footer>
+
+<script>
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
